@@ -14,8 +14,6 @@ import 'dart:io';
     'jõao' : '+55 (12) 10000-3123',
     'Maria' : '+55 (13) 92932-3123',
     'Pedro' : '+55 (14) 943222-3123',
-  
-  
   };
 
   print(telefones is List);
