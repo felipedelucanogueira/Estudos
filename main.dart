@@ -1,22 +1,49 @@
-import 'dart:io';
-import 'dart:math';
+import 'OO/modelo/venda.dart';
+import 'OO/modelo/cliente.dart';
+import 'OO/modelo/venda_item.dart';
+import 'OO/modelo/produto.dart';
 
-main(){
-var alunos = [ 
-  {'nome':'Felipe','nota':9.9},
-  {'nome':'Wilson','nota':9.3},
-  {'nome':'Mariana','nota':8.7},
-  {'nome':'Guilherme','nota':8.1},
-  {'nome':'Ana','nota':7.6},
-  {'nome':'Ricardo','nota':6.8},
-];
 
-var notasFinais = alunos.map((aluno) => aluno['nota'])
-.map((nota) => (nota as double).roundToDouble())
-.where((nota) => nota >= 8.5);
+main() {
+  var venda = Venda(
+    cliente : Cliente(
+      nome: 'Felipe de Luca',
+      cpf: '123.456.654-23'
 
-var total = notasFinais.reduce((t,a) => t+a);
+    ),
+    itens:<VendaItem>[
+      VendaItem(
+      quantidade:10,
+        produto: Produto(
+          codigo: 1,
+          nome: 'Trigo ',
+          preco: 4.42,
+          desconto: 0.5
+        )
+      ),
+      VendaItem(
+        quantidade: 8,
+        produto:Produto(
+        codigo:123,
+        nome : 'Feijao',
+        preco: 19.99,
+        desconto: 0.2
+        )
+      ),
+      VendaItem(
+      quantidade: 100,
+      produto:Produto(
+      codigo:31,
+      nome:'Borracha',
+      preco: 10.9,
+      desconto: 0.3
+      )
+      )
+    ]
+  );
 
-print('O valor da média é: ${total / notasFinais.length}.');
+print("O valor total da venda é: ${venda.valorTotal}");
+print("O nome do primeiro produto é: ${venda.itens[0].produto.nome}");
+
 
 }
